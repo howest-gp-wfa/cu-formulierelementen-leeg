@@ -1,30 +1,30 @@
 "use strict";
 
-window.addEventListener('load',Initieer);
+window.addEventListener('load',initialize);
 
-var txtIngave, txaResult; 
-var slcTalen;
-var divFeedback;
-var slcHoofd,slcDetail;
-var slcGenodigden,slcDeelnemers;
-var cbxSporten;
-var divSporten;
-var rdbGeslacht;
-var divToonGeslacht;
-var frmInvul;
+let inpInput,txaResult; 
+let slcLanguages;
+let divFeedback;
+let slcHead,slcDetail;
+let slcInvites,slcParticipants;
+let cbxSports;
+let divSports;
+let rdbSex;
+let divShowSex;
+let frmFill;
 
 //buttons
-var btnToevoegen;
-var btnToonEerste,btnToonGeselecteerd,btnToonAantal;
-var btnHeen, btnTerug;
-var btnToonGeslacht;
+let btnAdd;
+let btnShowFirst,btnShowSelected,btnShowQuantity;
+let btnAway, btnBack;
+let btnShowSex;
 
-const detailInhoud = [['Krokus','Roos','Tulp'], ['Eik','Es','Populier'],['Aap', 'Beer','Hond','Schaap']];
+const details = [['Krokus','Roos','Tulp'], ['Eik','Es','Populier'],['Aap', 'Beer','Hond','Schaap']];
 
 
-function Initieer(){
+function initialize(){
   //  DOM elementen ophalen
-  BindElements();
+  bindElements();
   // Eventlisteners toevoegen
   addEvents();
 }
@@ -35,51 +35,53 @@ function Initieer(){
 /**
  * Binds the HTML elements
  */
-function BindElements()
+function bindElements()
 {
-  txtIngave = document.getElementById("txtIngave");
-  txaResult = document.getElementById("txaResult");
-  slcTalen = document.querySelector('#slcTalen');
-  slcHoofd = document.querySelector('#slcHoofd');
-  slcGenodigden = document.querySelector('#slcGenodigden');
-  slcDeelnemers = document.querySelector('#slcDeelnemers');
-  slcDetail = document.querySelector('#slcDetail');
-  divFeedback = document.querySelector('#divFeedback');
-  divSporten = document.querySelector('#divSporten');
-  divToonGeslacht = document.querySelector('#divToonGeslacht');
-  btnToevoegen = document.querySelector("#btnToevoegen");
-  btnToonEerste = document.querySelector('#btnToonEerste');
-  btnToonGeselecteerd = document.querySelector('#btnToonGeselecteerd');
-  btnToonAantal = document.querySelector('#btnToonAantal');
-  btnHeen = document.querySelector('#btnHeen');
-  btnTerug = document.querySelector('#btnTerug');
-  btnToonGeslacht = document.querySelector('#btnToonGeslacht');
-  cbxSporten = document.querySelectorAll('input[type="checkbox"]');
-  rdbGeslacht = document.getElementsByName('geslacht');
-  frmInvul = document.querySelector('#frmInvul');
+  inpInput = document.querySelector("#input");
+  txaResult = document.querySelector("#result");
+  slcLanguages = document.querySelector('#languages');
+  slcHead = document.querySelector('#head');
+  slcInvites = document.querySelector('#invites');
+  slcParticipants = document.querySelector('#participants');
+  slcDetail = document.querySelector('#detail');
+  divFeedback = document.querySelector('#feedback');
+  divSports = document.querySelector('#sports');
+  divShowSex = document.querySelector('#show-sex-result');
+  
+  btnAdd = document.querySelector("#add");
+  btnShowFirst = document.querySelector('#show-first');
+  btnShowSelected = document.querySelector('#show-selected');
+  btnShowQuantity = document.querySelector('#show-number-of');
+  btnAway = document.querySelector('#away');
+  btnBack = document.querySelector('#back');
+  btnShowSex = document.querySelector('#show-sex');
+  
+  cbxSports = document.querySelectorAll('input[type="checkbox"]');
+  rdbSex = document.getElementsByName('sex');
+  frmFill = document.querySelector('#fill');
 }
 
 function addEvents()
 {
-  btnToevoegen.addEventListener('click',VulTextArea);
-  btnToonEerste.addEventListener('click',ToonEerste);
-  btnToonGeselecteerd.addEventListener('click',ToonGeselecteerd);
-  btnToonAantal.addEventListener('click',ToonAantal);
-  btnHeen.addEventListener('click',()=> Doorgeef(slcGenodigden,slcDeelnemers));
-  btnTerug.addEventListener('click', ()=> Doorgeef(slcDeelnemers,slcGenodigden));
-  btnToonGeslacht.addEventListener('click',ToonGeslacht);
-  slcHoofd.addEventListener('change',ToonDetaillijst);
-  slcDetail.addEventListener('dblclick',VerwijderElement);
-  frmInvul.addEventListener('submit',Controle);
+  btnAdd.addEventListener('click',fillTextArea);
+  btnShowFirst.addEventListener('click',showFirst);
+  btnShowSelected.addEventListener('click',showSelected);
+  btnShowQuantity.addEventListener('click',showNumberOfElements);
+  btnAway.addEventListener('click',()=> pass(slcInvites,slcParticipants));
+  btnBack.addEventListener('click', ()=> pass(slcParticipants,slcInvites));
+  btnShowSex.addEventListener('click',showSex);
+  slcHead.addEventListener('change',showDetailList);
+  slcDetail.addEventListener('dblclick',removeElement);
+  frmFill.addEventListener('submit',checkForm);
   //add events aan checkboxes
-  VoegEventlistenersToeAanCheckboxen();
+  addEventListenersToCheckboxes();
 }
 
 
 /**
  * voorbeeld 1 Tekstvakken tekstgebieden
  */
-function VulTextArea()
+function fillTextArea()
 {
     
 }
@@ -87,7 +89,7 @@ function VulTextArea()
  * Voorbeeld 2 Selectie uitlezen
  * Toon eerste element
  */
-function ToonEerste()
+function showFirst()
 {
   
 }
@@ -95,7 +97,7 @@ function ToonEerste()
  * Selectie uitlezen
  * toon geselecteerde element
  */
-function ToonGeselecteerd()
+function showSelected()
 {
   
 }
@@ -103,21 +105,21 @@ function ToonGeselecteerd()
  * Selectie uitlezen
  * Toon aantal elementen
  */
-function ToonAantal()
+function showNumberOfElements()
 {
   
 }
 /**
  * Voorbeeld 3: Select element uitlezen
  */
-function ToonDetaillijst()
+function showDetailList()
 {
   
 }
 /**
  * Voorbeeld 3: Select element uit lijst verwijderen
  */
-function VerwijderElement()
+function removeElement()
 {
   
 }
@@ -127,7 +129,7 @@ function VerwijderElement()
  * @param {*} van 
  * @param {*} naar 
  */
-function Doorgeef(van,naar)
+function pass(van,naar)
 {
   
 }
@@ -135,7 +137,7 @@ function Doorgeef(van,naar)
 /**
  * Voorbeeld 5: Checkboxen uitlezen
  */
-function VulDivSporten()
+function fillDivSports()
 {
   
   
@@ -144,7 +146,7 @@ function VulDivSporten()
  * Voorbeeld 6
  * Selectie van radiobuttons
  */
-function ToonGeslacht()
+function showSex()
 {
   
 }
@@ -153,7 +155,7 @@ function ToonGeslacht()
  * Voorbeeld 7
  * Controle Formulier
  */
-function Controle()
+function checkForm()
 {
   
 }
@@ -161,10 +163,10 @@ function Controle()
 /**
  * Voegt eventlisteners toe aan checkboxen
  */
-function VoegEventlistenersToeAanCheckboxen()
+function addEventListenersToCheckboxes()
 {
-  for (let i = 0 ; i<cbxSporten.length; i++){
-    cbxSporten[i].addEventListener('change',VulDivSporten);
+  for (let i = 0 ; i<cbxSports.length; i++){
+    cbxSports[i].addEventListener('change',fillDivSports);
   }
 
 }
