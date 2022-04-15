@@ -35,8 +35,7 @@ function initialize(){
 /**
  * Binds the HTML elements
  */
-function bindElements()
-{
+function bindElements() {
   inpInput = document.querySelector("#input");
   txaResult = document.querySelector("#result");
   slcLanguages = document.querySelector('#languages');
@@ -61,8 +60,7 @@ function bindElements()
   frmFill = document.querySelector('#fill');
 }
 
-function addEvents()
-{
+function addEvents() {
   btnAdd.addEventListener('click',fillTextArea);
   btnShowFirst.addEventListener('click',showFirst);
   btnShowSelected.addEventListener('click',showSelected);
@@ -81,46 +79,40 @@ function addEvents()
 /**
  * voorbeeld 1 Tekstvakken tekstgebieden
  */
-function fillTextArea()
-{
+function fillTextArea() {
     
 }
 /**
  * Voorbeeld 2 Selectie uitlezen
  * Toon eerste element
  */
-function showFirst()
-{
+function showFirst() {
   
 }
 /**
  * Selectie uitlezen
  * toon geselecteerde element
  */
-function showSelected()
-{
+function showSelected() {
   
 }
 /**
  * Selectie uitlezen
  * Toon aantal elementen
  */
-function showNumberOfElements()
-{
+function showNumberOfElements() {
   
 }
 /**
  * Voorbeeld 3: Select element uitlezen
  */
-function showDetailList()
-{
+function showDetailList() {
   
 }
 /**
  * Voorbeeld 3: Select element uit lijst verwijderen
  */
-function removeElement()
-{
+function removeElement() {
   
 }
 
@@ -129,16 +121,14 @@ function removeElement()
  * @param {*} van 
  * @param {*} naar 
  */
-function pass(van,naar)
-{
+function pass(van,naar) {
   
 }
 
 /**
  * Voorbeeld 5: Checkboxen uitlezen
  */
-function fillDivSports()
-{
+function fillDivSports() {
   
   
 }
@@ -146,8 +136,7 @@ function fillDivSports()
  * Voorbeeld 6
  * Selectie van radiobuttons
  */
-function showSex()
-{
+function showSex() {
   
 }
 
@@ -155,16 +144,14 @@ function showSex()
  * Voorbeeld 7
  * Controle Formulier
  */
-function checkForm()
-{
+function checkForm() {
   
 }
 
 /**
  * Voegt eventlisteners toe aan checkboxen
  */
-function addEventListenersToCheckboxes()
-{
+function addEventListenersToCheckboxes() {
   for (let i = 0 ; i<cbxSports.length; i++){
     cbxSports[i].addEventListener('change',fillDivSports);
   }
